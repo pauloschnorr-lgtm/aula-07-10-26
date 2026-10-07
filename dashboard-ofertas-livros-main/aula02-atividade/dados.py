@@ -12,6 +12,7 @@ CAMINHO_LIVROS = PASTA / "livros.csv"
 
 def ler_livros():
     """Lê o CSV de livros e devolve uma lista de dicionários."""
+
     livros = []
 
     try:
@@ -32,6 +33,7 @@ def ler_livros():
 
 def calcular_preco_medio(livros):
     """Soma os preços de todos os livros e divide pelo total."""
+
     soma = 0
 
     for livro in livros:
@@ -44,6 +46,7 @@ def calcular_preco_medio(livros):
 
 def contar_cinco_estrelas(livros):
     """Conta quantos livros têm a nota máxima."""
+
     contador = 0
 
     for livro in livros:
@@ -55,6 +58,7 @@ def contar_cinco_estrelas(livros):
 
 def encontrar_mais_caro(livros):
     """Devolve o livro de maior preço."""
+
     mais_caro = livros[0]
 
     for livro in livros:
@@ -66,6 +70,7 @@ def encontrar_mais_caro(livros):
 
 def converter_preco(preco):
     """Converte um preço do site em número."""
+
     return float(preco.replace("£", ""))
 
 
@@ -86,6 +91,7 @@ def converter_nota(nota):
 
 def preparar_livros(linhas):
     """Recebe as linhas do CSV e devolve os livros prontos para usar."""
+
     livros = []
 
     for linha in linhas:
@@ -104,4 +110,5 @@ def preparar_livros(linhas):
 
 def carregar_livros():
     """Lê o CSV e já devolve os livros prontos para usar."""
+
     return preparar_livros(ler_livros())
