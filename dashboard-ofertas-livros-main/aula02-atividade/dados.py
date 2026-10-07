@@ -6,16 +6,12 @@ import csv
 from pathlib import Path
 
 
-# Pasta onde este arquivo .py está.
-# Assim o programa encontra o CSV mesmo quando é executado
-# a partir de outra pasta (como no Streamlit Cloud).
 PASTA = Path(__file__).parent
 CAMINHO_LIVROS = PASTA / "livros.csv"
 
 
 def ler_livros():
     """Lê o CSV de livros e devolve uma lista de dicionários."""
-
     livros = []
 
     try:
@@ -36,7 +32,6 @@ def ler_livros():
 
 def calcular_preco_medio(livros):
     """Soma os preços de todos os livros e divide pelo total."""
-
     soma = 0
 
     for livro in livros:
@@ -49,7 +44,6 @@ def calcular_preco_medio(livros):
 
 def contar_cinco_estrelas(livros):
     """Conta quantos livros têm a nota máxima."""
-
     contador = 0
 
     for livro in livros:
@@ -61,7 +55,6 @@ def contar_cinco_estrelas(livros):
 
 def encontrar_mais_caro(livros):
     """Devolve o livro de maior preço."""
-
     mais_caro = livros[0]
 
     for livro in livros:
@@ -72,33 +65,27 @@ def encontrar_mais_caro(livros):
 
 
 def converter_preco(preco):
-    """Converte um preço do site em número: "£51.77" -> 51.77"""
-
+    """Converte um preço do site em número."""
     return float(preco.replace("£", ""))
 
 
 def converter_nota(nota):
-    """Converte a nota escrita em inglês em número: "Three" -> 3"""
+    """Converte a nota escrita em inglês em número."""
 
     if nota == "Five":
         return 5
-
     elif nota == "Four":
         return 4
-
     elif nota == "Three":
         return 3
-
     elif nota == "Two":
         return 2
-
     else:
         return 1
 
 
 def preparar_livros(linhas):
-    """Recebe as linhas lidas do CSV e devolve os livros com preço e nota em número."""
-
+    """Recebe as linhas do CSV e devolve os livros prontos para usar."""
     livros = []
 
     for linha in linhas:
@@ -117,13 +104,4 @@ def preparar_livros(linhas):
 
 def carregar_livros():
     """Lê o CSV e já devolve os livros prontos para usar."""
-
     return preparar_livros(ler_livros())
-
-
-if __name__ == "__main__":
-    livros = ler_livros()
-
-    print(f"{len(livros)} livros carregados")
-    print("Primeiro livro:", livros[0])
-
